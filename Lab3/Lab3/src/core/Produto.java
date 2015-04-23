@@ -28,34 +28,6 @@ public class Produto {
 		
 	}
 
-	private void dobraLista() {
-		Produto[] novoArray = new Produto[getListaDeProdutos().length*2];
-		System.arraycopy(getListaDeProdutos(), 0, novoArray, 0, getListaDeProdutos().length);
-		Produto.setListaDeProdutos(novoArray);
-	}
-
-	public static String cadastroProduto(Scanner sc){
-		String nome;
-		double preco;
-		String tipo;
-		String retorno;
-		int quantidade;
-		System.out.print("Digite o nome do produto:");
-		nome = sc.next();
-		System.out.print("Digite o pre�o unitario do produto:");
-		preco = sc.nextDouble();
-		System.out.print("Digite o tipo do produto:");
-		tipo = sc.next();
-		System.out.print("Digite a quantidade no estoque:");
-		quantidade = sc.nextInt();
-		new Produto(nome, preco, tipo, quantidade);
-		System.out.println("(" + quantidade + ")" + nome + "(s) cadastrado com sucesso.\n");
-		System.out.print("Deseja cadastrar outro produto?");
-		retorno = sc.next();
-		return retorno;
-		
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -87,7 +59,38 @@ public class Produto {
 	public int getQuantidade() {
 		return quantidade;
 	}
+	
+	public static Produto[] getListaDeProdutos() {
+		return listaDeProdutos;
+	}
 
+	public static void setListaDeProdutos(Produto[] listaDeProdutos) {
+		Produto.listaDeProdutos = listaDeProdutos;
+	}
+
+	
+	public static String cadastroProduto(Scanner sc){
+		String nome;
+		double preco;
+		String tipo;
+		String retorno;
+		int quantidade;
+		System.out.print("Digite o nome do produto:");
+		nome = sc.next();
+		System.out.print("Digite o pre�o unitario do produto:");
+		preco = sc.nextDouble();
+		System.out.print("Digite o tipo do produto:");
+		tipo = sc.next();
+		System.out.print("Digite a quantidade no estoque:");
+		quantidade = sc.nextInt();
+		new Produto(nome, preco, tipo, quantidade);
+		System.out.println("(" + quantidade + ")" + nome + "(s) cadastrado com sucesso.\n");
+		System.out.print("Deseja cadastrar outro produto?");
+		retorno = sc.next();
+		return retorno;
+		
+	}
+	
 	public static String vendaProduto(Scanner sc) {
 		String nome;
 		String retorno;
@@ -111,7 +114,7 @@ public class Produto {
 			}
 		}
 		else
-			System.out.println("==>" + nome +"nao cadastrado no sistema.");
+			System.out.println("==> " + nome +"nao cadastrado no sistema.");
 		
 		System.out.print("Deseja vender outro produto?");
 		retorno = sc.next();
@@ -154,15 +157,12 @@ public class Produto {
 		
 	}
 
-	public static Produto[] getListaDeProdutos() {
-		return listaDeProdutos;
-	}
 
-	public static void setListaDeProdutos(Produto[] listaDeProdutos) {
-		Produto.listaDeProdutos = listaDeProdutos;
+	private void dobraLista() {
+		Produto[] novoArray = new Produto[getListaDeProdutos().length*2];
+		System.arraycopy(getListaDeProdutos(), 0, novoArray, 0, getListaDeProdutos().length);
+		Produto.setListaDeProdutos(novoArray);
 	}
-
-	
 	
 	
 }
