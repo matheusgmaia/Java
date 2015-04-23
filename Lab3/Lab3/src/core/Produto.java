@@ -1,3 +1,4 @@
+/*114210417 - Matheus Gomes Maia - Turma1*/
 package core;
 
 import java.util.Scanner;
@@ -5,7 +6,7 @@ import java.util.Scanner;
 public class Produto {
 	//Atributos de cada produto
 	private String nome;
-	private double preço;
+	private double preco;
 	private String tipo;
 	private int quantidade;
 	
@@ -14,9 +15,9 @@ public class Produto {
 	public static double totalDeVendas = 0;
 	private static Produto[] listaDeProdutos = new Produto[5];
 
-	public Produto(String nome2, double preço2, String tipo2, int quantidade2) {
+	public Produto(String nome2, double preco2, String tipo2, int quantidade2) {
 		this.nome = nome2;
-		this.preço = preço2;
+		this.preco = preco2;
 		this.tipo = tipo2;
 		this.quantidade = quantidade2;
 		if (index == getListaDeProdutos().length){
@@ -35,19 +36,19 @@ public class Produto {
 
 	public static String cadastroProduto(Scanner sc){
 		String nome;
-		double preço;
+		double preco;
 		String tipo;
 		String retorno;
 		int quantidade;
 		System.out.print("Digite o nome do produto:");
 		nome = sc.next();
-		System.out.print("Digite o preço unitario do produto:");
-		preço = sc.nextDouble();
+		System.out.print("Digite o preï¿½o unitario do produto:");
+		preco = sc.nextDouble();
 		System.out.print("Digite o tipo do produto:");
 		tipo = sc.next();
 		System.out.print("Digite a quantidade no estoque:");
 		quantidade = sc.nextInt();
-		new Produto(nome, preço, tipo, quantidade);
+		new Produto(nome, preco, tipo, quantidade);
 		System.out.println("(" + quantidade + ")" + nome + "(s) cadastrado com sucesso.\n");
 		System.out.print("Deseja cadastrar outro produto?");
 		retorno = sc.next();
@@ -60,19 +61,19 @@ public class Produto {
 	}
 	
 	public double getQuantidadeQuePode() {
-		return quantidade*preço;
+		return quantidade*preco;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public double getPreço() {
-		return preço;
+	public double getPreco() {
+		return preco;
 	}
 
-	public void setPreço(double preço) {
-		this.preço = preço;
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 	public String getTipo() {
@@ -98,15 +99,15 @@ public class Produto {
 		if (produtoCadastrado(nome)){
 			Produto produtoaVender = idProduto(nome);
 			System.out.println("==>" + produtoaVender.nome + "(" + produtoaVender.tipo + ").R$" +
-			produtoaVender.preço);
+			produtoaVender.preco);
 			System.out.print("Digite a quantidade que deseja vender:");
 			quantidade = sc.nextInt();
 			if (quantidade < produtoaVender.getQuantidade()){
 				produtoaVender.quantidade -= quantidade;
-				Produto.totalDeVendas += (produtoaVender.getPreço() * quantidade);
+				Produto.totalDeVendas += (produtoaVender.getPreco() * quantidade);
 			}
 			else{
-				System.out.println("Não é possível vender pois não há " + produtoaVender.getNome() + " suficiente.");
+				System.out.println("Nï¿½o ï¿½ possï¿½vel vender pois nï¿½o hï¿½ " + produtoaVender.getNome() + " suficiente.");
 			}
 		}
 		else
@@ -145,7 +146,7 @@ public class Produto {
 				+ "Produtos cadastrados:");
 		
 		for(int i = 0; i<Produto.index;i++){
-			System.out.println("	" + (i+1) + ") " + getListaDeProdutos()[i].getNome() +"("+getListaDeProdutos()[i].getTipo() +").R$ " + getListaDeProdutos()[i].getPreço() + " Restante:" + getListaDeProdutos()[i].getQuantidade());
+			System.out.println("	" + (i+1) + ") " + getListaDeProdutos()[i].getNome() +"("+getListaDeProdutos()[i].getTipo() +").R$ " + getListaDeProdutos()[i].getPreco() + " Restante:" + getListaDeProdutos()[i].getQuantidade());
 			vendaPossivel += getListaDeProdutos()[i].getQuantidadeQuePode();
 		}
 		System.out.println("Total arrecadado em vendas: R$ " + Produto.totalDeVendas);
