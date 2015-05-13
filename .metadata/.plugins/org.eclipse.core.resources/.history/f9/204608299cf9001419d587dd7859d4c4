@@ -1,0 +1,50 @@
+package lab04;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Perfil {
+
+	private String nome;
+	List<Album> albuns;
+	List<Album> albunsFavoritos;
+	List<Playlist> playlists;
+	
+	public Perfil(String Nome) {
+		this.nome = Nome;
+		this.albuns = new ArrayList<Album>();
+		this.albunsFavoritos = new ArrayList<Album>();
+		this.playlists = new ArrayList<Playlist>();
+	}
+
+	public void adicionaAlbum(Album album) {
+		albuns.add(album);
+	}
+
+	public void adicionaAlbumfavorito(Album album) {
+		albunsFavoritos.add(album);
+	}
+
+	public void adicionaPlaylist(String nomePlaylist, Album album, int faixa) {
+		Playlist playlistAdicionar;
+		if (verificaPlaylist(nomePlaylist) == true){
+			playlistAdicionar = pegaPlaylist(nomePlaylist);
+			playlistAdicionar.adicionar(album, faixa, this);
+			
+		}
+		else{
+			playlistAdicionar = new Playlist(nomePlaylist, album, faixa);
+		}
+		playlists.add(playlistAdicionar);
+		
+		}
+
+	private Playlist pegaPlaylist(String nomePlaylist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean verificaPlaylist(String nomePlaylist){
+
+	}
+}

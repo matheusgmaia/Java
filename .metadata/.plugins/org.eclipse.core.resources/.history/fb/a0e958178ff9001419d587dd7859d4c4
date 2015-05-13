@@ -1,0 +1,16 @@
+package lab04;
+
+import java.util.List;
+
+public class Perfil {
+
+	private String nome;
+
+	public Perfil(String Nome) {
+		this.nome = Nome;
+		List<Album> albuns = ArrayList<Album>();
+		List<Album> albunsFavoritos = ArrayList<Album>();
+	}
+	
+	
+}

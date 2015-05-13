@@ -1,0 +1,50 @@
+package lab04;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Perfil {
+
+	private String nome;
+	List<Album> albuns;
+	List<Album> albunsFavoritos;
+	List<Playlist> playlists;
+	
+	public Perfil(String Nome) {
+		this.nome = Nome;
+		this.albuns = new ArrayList<Album>();
+		this.albunsFavoritos = new ArrayList<Album>();
+		this.playlists = new ArrayList<Playlist>();
+	}
+
+	public void adicionaAlbum(Album album) {
+		albuns.add(album);
+	}
+
+	public void adicionaAlbumfavorito(Album album) {
+		albunsFavoritos.add(album);
+	}
+
+	public void adicionaPlaylist(String nomePlaylist, Album album, int faixa) {
+		for(Playlist playlist : playlists){
+			if ((playlist.getNome()).equals(nomePlaylist)){
+				Playlist playlistaAdicionar = playlist;
+				if(albuns.contains(album)){
+					
+				}
+				else{
+					throw new Exception("Album n pertence a esse perfil");
+				}
+			}
+		Playlist playlistNova = new Playlist(nomePlaylist, album, faixa);
+		playlists.add(playlistNova);
+		
+		
+		}
+			
+		}
+	}
+
+	
+	
+}

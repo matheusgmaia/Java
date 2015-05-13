@@ -1,0 +1,17 @@
+INDEX VERSION 1.127+/home/matheusgm/git/Java-Exercicios/.metadata/.plugins/org.eclipse.jdt.core
+207581026.index
+4201408329.index
+1225813827.index
+1279675953.index
+2797796407.index
+2913048097.index
+1453598739.index
+3533483474.index
+4118765929.index
+3693448964.index
+1529428270.index
+3305932411.index
+2031085872.index
+319841276.index
+726145421.index
+2064907913.index

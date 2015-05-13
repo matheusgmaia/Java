@@ -1,20 +1,21 @@
 package lab04;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Album {
 
 	private String nome;
 	private String artista;
 	private int ano;
-	private static int prxFaixa = 1 ;
-	private int faixa;
 	private int duracaoTotal;
 	
-	private Musica[] faixas = new Musica[10];
+	private List<Musica> musicas = new ArrayList<Musica>();
 	
-	public Album(String string, String string2, int i) {
-		setNome(string);
-		setAno(i);
-		setArtista(string2);
+	public Album(String Nome, String Tipo, int Ano) {
+		setNome(Nome);
+		setAno(Ano);
+		setArtista(Tipo);
 	}
 
 
@@ -47,29 +48,30 @@ public class Album {
 		this.ano = ano;
 	}
 
-
-	public int getFaixa() {
-		return faixa;
-	}
-
-
-	public void setFaixa(int faixa) {
-		this.faixa = faixa;
-	}
-
-
-	public void adicionaMusica(Musica musica) {
-		faixas[prxFaixa] = musica;
-		musica.setFaixa(prxFaixa);
-		prxFaixa += 1;
-
+	
+	public Musica getFaixa(int index){
+		index -= 1;
+		return musicas.get(index);
 		
 	}
+	
+	public void adicionaMusica(Musica musica) {
+		musicas.add(musica);
+	}
 
 
 
-	public void atualizaDuracaoTotal(int duracaoTotal) {
-		//fazer depois
+	public int atualizaDuracaoTotal() {
+		for(Musica musica : musicas){
+			this.duracaoTotal += musica.getDuracao();
+		}
+		return duracaoTotal;
+	}
+
+
+	public void removeMusica(Musica musica) {
+		musicas.remove(musica);
+		
 	}
 	
 }

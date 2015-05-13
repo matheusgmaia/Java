@@ -1,0 +1,14 @@
+package lab04;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Playlist {
+
+	private String nome;	
+	
+	public Playlist(){
+		List<Musica> musicas = new ArrayList<Musica>();
+	}
+	
+}
