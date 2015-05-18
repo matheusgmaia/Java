@@ -28,30 +28,34 @@ public class Perfil {
 
 	public void adicionaPlaylist(String nomePlaylist, Album album, int faixa) throws Exception {
 		Playlist playlistAdicionar;
+		//Se a playlist ja existe
 		if (verificaPlaylist(nomePlaylist) == true){
 			playlistAdicionar = pegaPlaylist(nomePlaylist);
 			playlistAdicionar.adicionar(album, faixa, this);
 			
 		}
+		//Se ainda n foi feita
 		else{
-			playlistAdicionar = new Playlist(nomePlaylist, album, faixa);
+			playlistAdicionar = new Playlist(nomePlaylist);
+			playlistAdicionar.adicionar(album, faixa, this);
 		}
+		//Colocar a playlist na lista do perfil
 		playlists.add(playlistAdicionar);
 		
 		}
-
+	//Pega a plylist na arry do perfil
 	private Playlist pegaPlaylist(String nomePlaylist) {
 		for(Playlist playlist : playlists){
-			if(playlist.getNome().equals(nomePlaylist)){
+			if((playlist.getNome()) == nomePlaylist){
 				return playlist;
 			}
 		}
 		return null;
 	}
-
+	//Verifica se a playlist exite
 	public boolean verificaPlaylist(String nomePlaylist){
 		for(Playlist playlist : playlists){
-			if(playlist.getNome().equals(nomePlaylist)){
+			if((playlist.getNome()) == nomePlaylist){
 				return true;
 			}
 		}

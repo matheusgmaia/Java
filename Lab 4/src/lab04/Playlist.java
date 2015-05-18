@@ -8,8 +8,9 @@ public class Playlist {
 	private String nome;	
 	List<Musica> musicas;
 
-	public Playlist(String nomePlaylist, Album album, int faixa) {
-		musicas = new ArrayList<Musica>();
+	public Playlist(String nomePlaylist) {
+		this.musicas = new ArrayList<Musica>();
+		this.nome = nomePlaylist;
 	}
 
 
@@ -21,10 +22,10 @@ public class Playlist {
 
 	public void adicionar(Album album, int faixa, Perfil perfil) throws Exception {
 		if (perfil.albuns.contains(album)){
-			musicas.add(album.getFaixa(faixa));
+			this.musicas.add(album.getFaixa(faixa));
 		}
 		else{
-			throw new Exception("Não existe esse album n perfil");
+			throw new Exception("Nao existe esse album no perfil.");
 		}
 	}
 	

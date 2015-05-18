@@ -84,14 +84,26 @@ public class TestMusica {
 	public void testPerfil(){
 		try{
 			Musica stairway = new Musica("Stairway to Heaven",9,"Hard Rock");
+			Musica blackdog = new Musica("Black Dog",7,"Hard Rock");
 
 			Album ledz4 = new Album("Led Zeppelin 4", "LedZeppelin", 1970);
 			ledz4.adicionaMusica(stairway);
+			
+
+			
 			Perfil matheus = new Perfil("Matheus");
 			matheus.adicionaAlbum(ledz4);
-			matheus.adicionaAlbumfavorito(ledz4);
+
+			
+			matheus.adicionaPlaylist("Rock", ledz4, 1);
+
+			Album BlackDog = new Album("Outro ", "Outro", 1911);
+			BlackDog.adicionaMusica(blackdog);
+			
+			matheus.adicionaPlaylist("Rock", BlackDog, 1);
+			
 		}catch (Exception e){
-			//
+			Assert.assertEquals("Nao existe esse album no perfil.", e.getMessage());
 		}
 	}
 	
