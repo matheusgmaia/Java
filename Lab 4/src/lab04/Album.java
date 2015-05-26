@@ -1,58 +1,23 @@
+/* 114210417 - Matheus Gomes Maia: LAB 4 - Turma 1 */
 package lab04;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Album {
+public class Album  {
 
 	private String nome;
 	private String artista;
 	private int ano;
 	private int duracaoTotal;
 	
-	private List<Musica> musicas = new ArrayList<Musica>();
+	public List<Musica> musicas = new ArrayList<Musica>();
 	
 	public Album(String Nome, String Tipo, int Ano) {
 		setNome(Nome);
 		setAno(Ano);
 		setArtista(Tipo);
 	}
-
-	
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((artista == null) ? 0 : artista.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Album other = (Album) obj;
-		if (artista == null) {
-			if (other.artista != null)
-				return false;
-		} else if (!artista.equals(other.artista))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
-	}
-
 
 
 	public String getNome() {
@@ -106,8 +71,11 @@ public class Album {
 
 
 	public void removeMusica(Musica musica) {
-		musicas.remove(musica);
-		
+		musicas.remove(musica);	
 	}
+
+
+
 	
+
 }
