@@ -1,12 +1,10 @@
 import java.awt.List;
 import java.util.ArrayList;
 
-import Jogo.TipoDeJogo;
-
 
 public class Jogo {
 	
-	//VARIÁVEIS
+	//VARIAVEIS
 	private String nome;
 	private double valor;
 	private double maiorScore;

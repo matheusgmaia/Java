@@ -14,10 +14,12 @@ public class Usuario {
 	
 	//TIPOS DE USUARIO
 	public enum TipoDeUsuario{
-		NOOB(10),VETERANO(20);
+		NOOB(10, "Noob"),VETERANO(20, "Veterano");
 		public int valorDoDesconto;
-		TipoDeUsuario(int desconto){
+		public String tipoDeUsuario;
+		TipoDeUsuario(int desconto, String tipo){
 			valorDoDesconto = desconto;
+			tipoDeUsuario = tipo;
 		} 
 	}
 

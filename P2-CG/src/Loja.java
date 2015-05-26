@@ -7,7 +7,7 @@ public class Loja {
 	//private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
 	private ArrayList<Jogo> jogosCadastrados = new ArrayList<Jogo>();
 	Map<String, Usuario> mapaDeUsuarios = new HashMap<String, Usuario>();
-	Map<String, double> tabelaDeJogos = new HashMap<String, double>();	
+	Map<String, Double> tabelaDeJogos = new HashMap<String, Double>();	
 	
 	private void criaUsuario(String nome, String login, double grana){
 		Usuario usuarioNovo = new Usuario(nome, login, grana);
