@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Loja {
+	//DADOS
+	//private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
+	private ArrayList<Jogo> jogosCadastrados = new ArrayList<Jogo>();
+	Map<String, Usuario> mapaDeUsuarios = new HashMap<String, Usuario>();
+	Map<String, Double> tabelaDeJogos = new HashMap<String, Double>();	
+	
+	private void criaUsuario(String nome, String login, double grana){
+		Usuario usuarioNovo = new Usuario(nome, login, grana);
+		mapaDeUsuarios.put(login, usuarioNovo);
+	}
+	
+	private void jogoNovo(String nome, double valor, Jogo.TipoDeJogo tipo){
+		Jogo jogoNovo = null;
+		if(tipo == Jogo.TipoDeJogo.RPG){
+			Jogo RPGNovo = new RPG(nome, valor);
+			jogoNovo = RPGNovo;
+		}
+		else if(tipo == Jogo.TipoDeJogo.LUTA){
+			Jogo LutaNovo = new Luta(nome, valor);
+			jogoNovo = LutaNovo;
+		}
+		else if(tipo == Jogo.TipoDeJogo.PLATAFORMA){
+			Jogo PlataformaNovo = new Plataforma(nome, valor);
+			jogoNovo = PlataformaNovo;
+		} 
+		jogosCadastrados.add(jogoNovo);
+		tabelaDeJogos.put(jogoNovo.getNome(), jogoNovo.getValor());
+		
+	}
+	private void vendaJogos(String nome, Usuario usuario){
+		if (tabelaDeJogos.containsKey(nome)){
+			if (usuario.getDinheiroQuePossui() <= tabelaDeJogos.get(nome)){
+				for (Jogo jogo : jogosCadastrados) {
+					if (jogo.getNome()== nome){
+						usuario.comprarJogo(jogo);
+					}
+				}
+			}else{
+				System.out.println("Usuario não tem dinheiro suficiente");
+			}
+		}else{
+			System.out.println("Jogo nao cadastrado!");
+		}
+		
+		}
+	}
+}

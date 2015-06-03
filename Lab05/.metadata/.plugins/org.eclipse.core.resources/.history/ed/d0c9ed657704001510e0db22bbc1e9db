@@ -1,0 +1,10 @@
+
+public class Luta extends Jogo {
+
+	@Override
+	public void joga(double maiorScore, boolean zerar) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

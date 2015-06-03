@@ -1,0 +1,10 @@
+
+public class RPG extends Jogo {
+
+
+	public RPG(String nome, double valor) {
+		this.nome = nome;
+		this.valor = valor;
+	}
+
+}

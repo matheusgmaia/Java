@@ -1,0 +1,2 @@
+2015-06-03 11:13:01,710 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11-sources.jar
+2015-06-03 11:13:02,501 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11-sources.jar

@@ -1,0 +1,15 @@
+public class Plataforma extends Jogo {
+	private TipoDeJogo tipo = Jogo.TipoDeJogo.RPG;
+	public Plataforma(String nome, double valor) {
+		super(nome, valor);
+		this.nome = nome;
+		this.valor = valor;
+
+		}
+
+	@Override
+	public void joga(double maiorScore, boolean zerar) {
+
+	}
+
+}

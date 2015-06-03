@@ -1,0 +1,17 @@
+import static org.junit.Assert.*;
+
+
+public class Test {
+
+	@org.junit.Test
+	public void test() {
+		Loja loja = new Loja();
+		Usuario matheus;
+		matheus = loja.criaUsuario("Matheus Maia", "matheusgmaia", 5000 );
+		loja.jogoNovo("Donkey Kong", 50, Jogo.TipoDeJogo.PLATAFORMA);
+		loja.vendaJogos("Donkey Kong", matheus);
+		loja.imprimirInformacoes();
+		fail("Not yet implemented");
+	}
+
+}

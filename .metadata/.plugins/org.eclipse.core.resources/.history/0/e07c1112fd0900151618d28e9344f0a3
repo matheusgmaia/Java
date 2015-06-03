@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+
+public class Usuario {
+
+	// ATRIBUTOS
+	private String nome;
+	private String login;
+	private double dinheiroQuePossui;
+	private double dinheiroGasto;
+	private TipoDeUsuario tipoDeUsuario = TipoDeUsuario.NOOB;
+	private double desconto = tipoDeUsuario.valorDoDesconto;
+	private ArrayList<Jogo> jogosComprados = new ArrayList<Jogo>();
+	
+
+	// TIPOS DE USUARIO
+	public enum TipoDeUsuario {
+		NOOB(0.90, "Noob"), VETERANO(0.80, "Veterano");
+		public double valorDoDesconto;
+		public String tipoDeUsuario;
+
+		TipoDeUsuario(double desconto, String tipo) {
+			valorDoDesconto = desconto*this.valorDoDesconto;
+			tipoDeUsuario = tipo;
+		}
+	}
+
+	public Usuario(String nome2, String login2, double grana) {
+		this.nome = nome2;
+		this.setLogin(login2);
+		this.setDinheiroQuePossui(grana);
+
+	}
+
+	public void comprarJogo(Jogo jogo) {
+		this.jogosComprados.add(jogo);
+		this.dinheiroQuePossui -= jogo.valor*this.getDesconto();
+		this.dinheiroGasto += jogo.valor;
+	}
+
+	public double getDinheiroQuePossui() {
+		return dinheiroQuePossui;
+	}
+
+	public void setDinheiroQuePossui(double dinheiroQuePossui) {
+		this.dinheiroQuePossui = dinheiroQuePossui;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public void adicionaDinheiro(double valor) {
+		setDinheiroQuePossui((getDinheiroQuePossui()+valor));
+	}
+
+	public void imprimeInformacoesUsuario() {
+		System.out.println(this.login + "\n" + this.nome + " - Jogador" + this.tipoDeUsuario.tipoDeUsuario
+				+ "\nLista de Jogos:");
+		for (Jogo jogo : jogosComprados) {
+			System.out.println("+ " + jogo.nome + "- " + jogo.tipoDeJogo + ":"
+					+ "\n==> Jogou " + jogo.vezesJogadas + " vez(es)"
+					+ "\n==> Zerou " + jogo.vezesZeradas + " vez(es)"
+					+ "\n==> Maior score: " + jogo.maiorScore
+					+ "Total de preço de jogos:" + this.dinheiroGasto);
+		}
+		
+	}
+
+	public double getDesconto() {
+		return this.tipoDeUsuario.valorDoDesconto;
+	}
+
+	public void setDesconto(double desconto) {
+		this.desconto = desconto;
+	}
+
+}

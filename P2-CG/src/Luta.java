@@ -1,0 +1,20 @@
+import java.util.Collections;
+
+
+public class Luta extends Jogo {
+	private TipoDeJogo tipo = Jogo.TipoDeJogo.RPG;
+
+	public Luta(String nome, double valor, EstiloDeJogo[] deJogos) {
+		super(nome, valor);
+		this.nome = nome;
+		this.valor = valor;
+		Collections.addAll(this.estilosDeJogo, deJogos);
+		}
+
+	@Override
+	public void joga(double maiorScore, boolean zerar) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
