@@ -1,20 +1,33 @@
-import java.util.Collections;
+import java.util.Set;
+
 
 
 public class Luta extends Jogo {
-	private TipoDeJogo tipo = Jogo.TipoDeJogo.RPG;
+	
+	public Luta(String nome, double valor, Set<EstiloDeJogo> estilosDeJogo) {
+		super(nome, valor, estilosDeJogo);
+		super.tipo = Jogo.TipoDeJogo.LUTA;
+	}
+
 
 	public Luta(String nome, double valor, EstiloDeJogo[] deJogos) {
-		super(nome, valor);
-		this.nome = nome;
-		this.valor = valor;
-		Collections.addAll(this.estilosDeJogo, deJogos);
-		}
+		super(nome, valor, deJogos);
+		super.tipo = Jogo.TipoDeJogo.LUTA;
+	}
+
 
 	@Override
-	public void joga(double maiorScore, boolean zerar) {
-		// TODO Auto-generated method stub
-
+	public int joga(double maiorScore1, boolean zerar) {
+		if(zerar == true){
+			vezesZeradas +=1;
+		}
+		vezesJogadas += 1;
+		if(maiorScore < maiorScore1){
+			maiorScore = maiorScore1;
+		}
+		return (int) (maiorScore/1000.0);
 	}
+
+
 
 }

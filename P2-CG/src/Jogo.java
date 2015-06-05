@@ -1,5 +1,3 @@
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,12 +6,11 @@ public abstract class Jogo {
 	// VARIAVEIS
 	protected String nome;
 	protected double valor;
-	protected double maiorScore;
-	protected int vezesJogadas;
-	protected int vezesZeradas;
-	protected int tipoDeJogo;
+	protected double maiorScore = 0;
+	protected int vezesJogadas = 0;
+	protected int vezesZeradas = 0;
 	protected Set<Jogo.EstiloDeJogo> estilosDeJogo = new HashSet<Jogo.EstiloDeJogo>();
-	protected TipoDeJogo tipo;
+	public TipoDeJogo tipo = null;
 
 	// TIPOS DE JOGO
 	public enum TipoDeJogo {
@@ -27,21 +24,41 @@ public abstract class Jogo {
 
 	// ESTILO DE JOGO
 	public enum EstiloDeJogo {
-		ONLINE("Online"), OFFLINE("Offline"), MULTIPLAYER("Multiplayer"), COOPERATIVO(
-				"Cooperativo"), COMPETITIVO("Competitivo");
+		ONLINE("Online", 0, 10, 10, 0), OFFLINE("Offline", 30, 0, 0, 0), MULTIPLAYER(
+				"Multiplayer", 10, 0, 0, 0), COOPERATIVO("Cooperativo", 0, 50,
+				20, 20), COMPETITIVO("Competitivo", 0, 20, 0, 20);
 		public String estiloDeJogo;
+		public int recompensaNoob;
+		public int punicaoNoob;
+		public int recompensaVeterano;
+		public int punicaoVeterano;
 
-		EstiloDeJogo(String estilo) {
+		EstiloDeJogo(String estilo, int recompensaN, int punicaoN,
+				int recompensaV, int punicaoV) {
 			estiloDeJogo = estilo;
+			recompensaNoob = recompensaN;
+			punicaoNoob = punicaoN;
+			recompensaVeterano = recompensaV;
+			punicaoVeterano = punicaoV;
+
 		}
 	}
 
-	public Jogo(String nome, double valor) {
+	public Jogo(String nome, double valor, Set<EstiloDeJogo> estilos) {
 		this.nome = nome;
 		this.valor = valor;
+		this.estilosDeJogo.addAll(estilos);
 	}
 
-	public abstract void joga(double maiorScore, boolean zerar);
+	public Jogo(String nome, double valor, EstiloDeJogo[] deJogos) {
+		this.nome = nome;
+		this.valor = valor;
+		for (EstiloDeJogo estiloDeJogo : deJogos) {
+			this.estilosDeJogo.add(estiloDeJogo);
+		}
+	}
+
+	public abstract int joga(double maiorScore, boolean zerar);
 
 	public String getNome() {
 		return nome;
@@ -83,5 +100,20 @@ public abstract class Jogo {
 		this.vezesZeradas = vezesZeradas;
 	}
 
+	public Set<Jogo.EstiloDeJogo> getEstilosDeJogo() {
+		return estilosDeJogo;
+	}
+
+	public void setEstilosDeJogo(Set<Jogo.EstiloDeJogo> estilosDeJogo) {
+		this.estilosDeJogo = estilosDeJogo;
+	}
+
+	public TipoDeJogo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDeJogo tipo) {
+		this.tipo = tipo;
+	}
 
 }

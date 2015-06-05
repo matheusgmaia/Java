@@ -1,18 +1,36 @@
-import java.util.Collections;
+import java.util.Set;
+
 
 public class Plataforma extends Jogo {
-	private TipoDeJogo tipo = Jogo.TipoDeJogo.RPG;
-	public Plataforma(String nome, double valor, EstiloDeJogo[] deJogos) {
-		super(nome, valor);
-		this.nome = nome;
-		this.valor = valor;
-		Collections.addAll(this.estilosDeJogo, deJogos);
 
-		}
-
-	@Override
-	public void joga(double maiorScore, boolean zerar) {
+	public Plataforma(String nome, double valor, Set<EstiloDeJogo> estilosDeJogo) {
+		super(nome, valor, estilosDeJogo);
+		tipo = Jogo.TipoDeJogo.PLATAFORMA;
 
 	}
+
+	public Plataforma(String nome, double valor, EstiloDeJogo[] deJogos) {
+		super(nome, valor, deJogos);
+		tipo = Jogo.TipoDeJogo.PLATAFORMA;
+	}
+
+	@Override
+	public int joga(double maiorScore1, boolean zerar) {
+		if(zerar == true){
+			vezesZeradas +=1;
+		}
+		vezesJogadas += 1;
+		if(maiorScore < maiorScore1){
+			maiorScore = maiorScore1;
+		}
+		if(zerar == true){
+			return 20;
+		}
+		return 0;
+	}
+
+
+
+
 
 }
