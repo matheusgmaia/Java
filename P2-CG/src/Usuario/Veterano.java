@@ -1,3 +1,5 @@
+package Usuario;
+
 
 public class Veterano extends Usuario{
 

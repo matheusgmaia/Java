@@ -1,4 +1,10 @@
+package Usuario;
 import java.util.ArrayList;
+
+import Jogo.Jogo;
+import Jogo.Luta;
+import Jogo.Plataforma;
+import Jogo.RPG;
 
 public class Usuario {
 
@@ -33,10 +39,10 @@ public class Usuario {
 	public void comprarJogo(Jogo jogo) {
 		Jogo jogoCopia = copiaJogo(jogo);
 		this.jogosComprados.add(jogoCopia);
-		this.x2p += jogo.valor * 10;
-		this.dinheiroQuePossui -= jogo.valor
+		this.x2p += jogo.getValor() * 10;
+		this.dinheiroQuePossui -= jogo.getValor()
 				* this.tipoDeUsuario.valorDoDesconto;
-		this.dinheiroGasto += jogo.valor;
+		this.dinheiroGasto += jogo.getValor();
 	}
 
 	public void imprimeInformacoesUsuario() {
@@ -44,10 +50,10 @@ public class Usuario {
 				+ this.tipoDeUsuario.tipoDeUsuario + " X2p:" + this.x2p
 				+ "\nLista de Jogos:");
 		for (Jogo jogo : jogosComprados) {
-			System.out.println("\n+ " + jogo.nome + "- " + jogo.tipo + ":"
-					+ "\n==> Jogou " + jogo.vezesJogadas + " vez(es)"
-					+ "\n==> Zerou " + jogo.vezesZeradas + " vez(es)"
-					+ "\n==> Maior score: " + jogo.maiorScore
+			System.out.println("\n+ " + jogo.getNome() + "- " + jogo.tipo + ":"
+					+ "\n==> Jogou " + jogo.getVezesJogadas() + " vez(es)"
+					+ "\n==> Zerou " + jogo.getVezesZeradas() + " vez(es)"
+					+ "\n==> Maior score: " + jogo.getMaiorScore()
 					+ "\n");
 		}
 		System.out.println("\nTotal de preco de jogos:" + this.dinheiroGasto 
@@ -58,16 +64,16 @@ public class Usuario {
 	public Jogo copiaJogo(Jogo original) {
 		Jogo jogoNovo = null;
 		if (original.tipo.equals(Jogo.TipoDeJogo.RPG)) {
-			Jogo RPGNovo = new RPG(original.nome, original.valor,
-					original.estilosDeJogo);
+			Jogo RPGNovo = new RPG(original.getNome(), original.getValor(),
+					original.getEstilosDeJogo());
 			jogoNovo = RPGNovo;
 		} else if (original.tipo.equals(Jogo.TipoDeJogo.LUTA)) {
-			Jogo LutaNovo = new Luta(original.nome, original.valor,
-					original.estilosDeJogo);
+			Jogo LutaNovo = new Luta(original.getNome(), original.getValor(),
+					original.getEstilosDeJogo());
 			jogoNovo = LutaNovo;
 		} else if (original.tipo.equals(Jogo.TipoDeJogo.PLATAFORMA)) {
-			Jogo PlataformaNovo = new Plataforma(original.nome, original.valor,
-					original.estilosDeJogo);
+			Jogo PlataformaNovo = new Plataforma(original.getNome(), original.getValor(),
+					original.getEstilosDeJogo());
 			jogoNovo = PlataformaNovo;
 		}
 		return jogoNovo;
@@ -78,16 +84,16 @@ public class Usuario {
 		int pontosPorJogar = 0;
 		int recompensa = 0;
 		for (Jogo jogo : jogosComprados) {
-			if (jogo.nome == nome) {
+			if (jogo.getNome() == nome) {
 				int x2pGanho = jogo.joga(score, zerou);
 				if (jogo.tipo.equals(Jogo.TipoDeJogo.LUTA)) {
-					if (jogo.maiorScore < score) {
+					if (jogo.getMaiorScore() < score) {
 						pontosPorJogar += x2pGanho;
 					}
 				} else {
 					pontosPorJogar += x2pGanho;
 				}
-				for (Jogo.EstiloDeJogo estilo : jogo.estilosDeJogo) {
+				for (Jogo.EstiloDeJogo estilo : jogo.getEstilosDeJogo()) {
 					if (this.tipoDeUsuario.equals(Usuario.TipoDeUsuario.NOOB)) {
 						recompensa += estilo.recompensaNoob;
 					} else {
@@ -104,16 +110,16 @@ public class Usuario {
 		int pontosPorJogar = 0;
 		int punicao = 0;
 		for (Jogo jogo : jogosComprados) {
-			if (jogo.nome == nome) {
+			if (jogo.getNome() == nome) {
 				int x2pGanho = jogo.joga(score, zerou);
 				if (jogo.tipo.equals(Jogo.TipoDeJogo.LUTA)) {
-					if (jogo.maiorScore < score) {
+					if (jogo.getMaiorScore() < score) {
 						pontosPorJogar += x2pGanho;
 					}
 				} else {
 					pontosPorJogar += x2pGanho;
 				}
-				for (Jogo.EstiloDeJogo estilo : jogo.estilosDeJogo) {
+				for (Jogo.EstiloDeJogo estilo : jogo.getEstilosDeJogo()) {
 					if (this.tipoDeUsuario.equals(Usuario.TipoDeUsuario.NOOB)) {
 						punicao -= estilo.recompensaNoob;
 					} else {

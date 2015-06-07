@@ -1,4 +1,13 @@
+package Loja;
 import java.util.*;
+
+import Jogo.Jogo;
+import Jogo.Luta;
+import Jogo.Plataforma;
+import Jogo.RPG;
+import Usuario.Noob;
+import Usuario.Usuario;
+import Usuario.Veterano;
 
 public class Loja {
 	// DADOS
@@ -39,7 +48,7 @@ public class Loja {
 							.get(nome)) {
 						for (Jogo jogo : jogosCadastrados) {
 							if (jogo.getNome() == nome) {
-								totalArrecadado += (tabelaDeJogos.get(nome) * usuario.tipoDeUsuario.valorDoDesconto);
+								totalArrecadado += (tabelaDeJogos.get(nome) * usuario.getTipoDeUsuario().valorDoDesconto);
 								usuario.comprarJogo(jogo);
 
 							}
@@ -81,12 +90,12 @@ public class Loja {
 	public void upgrade(String id) {
 		for (Usuario usuario : usuariosCadastrados) {
 			if (usuario.getLogin() == id) {
-				if ((usuario.x2p >= 1000) && (usuario instanceof Noob)) {
+				if ((usuario.getX2p() >= 1000) && (usuario instanceof Noob)) {
 					Veterano u = new Veterano(usuario.getNome(),
 							usuario.getLogin(), usuario.getDinheiroQuePossui());
-					u.x2p = usuario.x2p;
-					u.dinheiroGasto = usuario.dinheiroGasto;
-					u.jogosComprados = usuario.jogosComprados;
+					u.setX2p(usuario.getX2p());
+					u.setDinheiroGasto(usuario.getDinheiroGasto());
+					u.setJogosComprados(usuario.getJogosComprados());
 					usuariosCadastrados.remove(usuario);
 					usuariosCadastrados.add(u);
 				}
@@ -97,12 +106,12 @@ public class Loja {
 	public void downgrade(String id) {
 		for (Usuario usuario : usuariosCadastrados) {
 			if (usuario.getLogin() == id) {
-				if ((usuario.x2p < 1000) && (usuario instanceof Veterano)) {
+				if ((usuario.getX2p() < 1000) && (usuario instanceof Veterano)) {
 					Noob u = new Noob(usuario.getNome(), usuario.getLogin(),
 							usuario.getDinheiroQuePossui());
-					u.x2p = usuario.x2p;
-					u.dinheiroGasto = usuario.dinheiroGasto;
-					u.jogosComprados = usuario.jogosComprados;
+					u.setX2p(usuario.getX2p());
+					u.setDinheiroGasto(usuario.getDinheiroGasto());
+					u.setJogosComprados(usuario.getJogosComprados());
 					usuariosCadastrados.remove(usuario);
 					usuariosCadastrados.add(u);
 				}

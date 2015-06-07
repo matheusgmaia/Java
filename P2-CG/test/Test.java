@@ -1,3 +1,6 @@
+import Jogo.Jogo;
+import Loja.Loja;
+
 public class Test {
 
 	@org.junit.Test
