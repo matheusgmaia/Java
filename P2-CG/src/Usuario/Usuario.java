@@ -2,9 +2,6 @@ package Usuario;
 import java.util.ArrayList;
 
 import Jogo.Jogo;
-import Jogo.Luta;
-import Jogo.Plataforma;
-import Jogo.RPG;
 
 public class Usuario {
 
@@ -37,11 +34,9 @@ public class Usuario {
 	}
 
 	public void comprarJogo(Jogo jogo) {
-		Jogo jogoCopia = copiaJogo(jogo);
-		this.jogosComprados.add(jogoCopia);
+		this.jogosComprados.add(jogo);
 		this.x2p += jogo.getValor() * 10;
-		this.dinheiroQuePossui -= jogo.getValor()
-				* this.tipoDeUsuario.valorDoDesconto;
+		this.dinheiroQuePossui -= jogo.getValor()* this.tipoDeUsuario.valorDoDesconto;
 		this.dinheiroGasto += jogo.getValor();
 	}
 
@@ -61,24 +56,6 @@ public class Usuario {
 
 	}
 
-	public Jogo copiaJogo(Jogo original) {
-		Jogo jogoNovo = null;
-		if (original.tipo.equals(Jogo.TipoDeJogo.RPG)) {
-			Jogo RPGNovo = new RPG(original.getNome(), original.getValor(),
-					original.getEstilosDeJogo());
-			jogoNovo = RPGNovo;
-		} else if (original.tipo.equals(Jogo.TipoDeJogo.LUTA)) {
-			Jogo LutaNovo = new Luta(original.getNome(), original.getValor(),
-					original.getEstilosDeJogo());
-			jogoNovo = LutaNovo;
-		} else if (original.tipo.equals(Jogo.TipoDeJogo.PLATAFORMA)) {
-			Jogo PlataformaNovo = new Plataforma(original.getNome(), original.getValor(),
-					original.getEstilosDeJogo());
-			jogoNovo = PlataformaNovo;
-		}
-		return jogoNovo;
-
-	}
 
 	public void recopensar(String nome, double score, boolean zerou) {
 		int pontosPorJogar = 0;

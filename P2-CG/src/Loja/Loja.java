@@ -1,10 +1,9 @@
 package Loja;
 import java.util.*;
 
+import Excepions.JogoNExiste;
 import Jogo.Jogo;
-import Jogo.Luta;
-import Jogo.Plataforma;
-import Jogo.RPG;
+import Jogo.JogoFactory;
 import Usuario.Noob;
 import Usuario.Usuario;
 import Usuario.Veterano;
@@ -24,46 +23,36 @@ public class Loja {
 	}
 
 	public void jogoNovo(String nome, double valor, Jogo.TipoDeJogo tipo,
-			Jogo.EstiloDeJogo... deJogos) {
-		Jogo jogoNovo = null;
-		if (tipo.equals(Jogo.TipoDeJogo.RPG)) {
-			Jogo RPGNovo = new RPG(nome, valor, deJogos);
-			jogoNovo = RPGNovo;
-		} else if (tipo.equals(Jogo.TipoDeJogo.LUTA)) {
-			Jogo LutaNovo = new Luta(nome, valor, deJogos);
-			jogoNovo = LutaNovo;
-		} else if (tipo.equals(Jogo.TipoDeJogo.PLATAFORMA)) {
-			Jogo PlataformaNovo = new Plataforma(nome, valor, deJogos);
-			jogoNovo = PlataformaNovo;
-		}
+		Jogo.EstiloDeJogo... deJogos) {
+		Jogo jogoNovo = JogoFactory.criaJogo(nome, valor, tipo, deJogos);
 		jogosCadastrados.add(jogoNovo);
-		tabelaDeJogos.put(jogoNovo.getNome(), jogoNovo.getValor());
+		tabelaDeJogos.put(jogoNovo.getNome(), jogoNovo.getValor());tabelaDeJogos.get(nome); 
 	}
 
-	public void vendaJogos(String nome, String login) {
-		for (Usuario usuario : usuariosCadastrados) {
-			if (usuario.getLogin() == login) {
-				if (tabelaDeJogos.containsKey(nome)) {
-					if (usuario.getDinheiroQuePossui() >= tabelaDeJogos
-							.get(nome)) {
-						for (Jogo jogo : jogosCadastrados) {
-							if (jogo.getNome() == nome) {
-								totalArrecadado += (tabelaDeJogos.get(nome) * usuario.getTipoDeUsuario().valorDoDesconto);
-								usuario.comprarJogo(jogo);
 
-							}
-						}
-					} else {
-						System.out
-								.println("Usuario não tem dinheiro suficiente");
-					}
+	public void vendaJogos(String nome, String login) {
+		if (mapaDeUsuarios.containsKey(login) || (tabelaDeJogos.containsKey(nome))) {
+			Usuario usuario = mapaDeUsuarios.get(login);
+			Jogo jogo = null;
+			for (Jogo jogo2 : jogosCadastrados) {
+				if (jogo2.getNome() == nome) {
+					jogo = jogo2;
+				}
+			}
+			
+			if (usuario.getDinheiroQuePossui() >= (tabelaDeJogos.get(nome))* usuario.getTipoDeUsuario().valorDoDesconto) {
+					totalArrecadado += (tabelaDeJogos.get(nome) * usuario.getTipoDeUsuario().valorDoDesconto);
+					Jogo jogoCopia = JogoFactory.criacopia(jogo);
+					usuario.comprarJogo(jogoCopia);
+
 				} else {
-					System.out.println("Jogo nao cadastrado!");
+					System.out.println("Usuario não tem dinheiro suficiente");
+				}
+				} else {
+					System.out.println("Jogo ou Usuario nao cadastrado!");
 
 				}
 			}
-		}
-	}
 
 	public void adicionaDinheiro(String login, double valor) {
 		if (mapaDeUsuarios.containsKey(login)) {
@@ -88,8 +77,8 @@ public class Loja {
 	}
 
 	public void upgrade(String id) {
-		for (Usuario usuario : usuariosCadastrados) {
-			if (usuario.getLogin() == id) {
+		if (mapaDeUsuarios.containsKey(id)) {
+			Usuario usuario = mapaDeUsuarios.get(id);
 				if ((usuario.getX2p() >= 1000) && (usuario instanceof Noob)) {
 					Veterano u = new Veterano(usuario.getNome(),
 							usuario.getLogin(), usuario.getDinheiroQuePossui());
@@ -101,11 +90,11 @@ public class Loja {
 				}
 			}
 		}
-	}
+	
 
-	public void downgrade(String id) {
-		for (Usuario usuario : usuariosCadastrados) {
-			if (usuario.getLogin() == id) {
+	public void downgrade(String id) throws JogoNExiste {
+		if (mapaDeUsuarios.containsKey(id)) {
+			Usuario usuario = mapaDeUsuarios.get(id);
 				if ((usuario.getX2p() < 1000) && (usuario instanceof Veterano)) {
 					Noob u = new Noob(usuario.getNome(), usuario.getLogin(),
 							usuario.getDinheiroQuePossui());
@@ -116,8 +105,8 @@ public class Loja {
 					usuariosCadastrados.add(u);
 				}
 			}
-		}
 	}
+
 
 	public void recopensar(String id, String string2, int i, boolean b) {
 		for (Usuario usuario : usuariosCadastrados) {
