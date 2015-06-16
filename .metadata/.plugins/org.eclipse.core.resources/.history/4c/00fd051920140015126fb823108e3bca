@@ -1,0 +1,25 @@
+package Loja;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import Jogo.Jogo;
+import Usuario.Noob;
+import Usuario.Usuario;
+
+public class Controller {
+
+public Loja loja = new Loja();
+public Façade fachada = new Façade();
+Map<String, Double> tabelaDeJogos = new HashMap<String, Double>();
+private double totalArrecadado = 0;
+private ArrayList<Jogo> jogosCadastrados = new ArrayList<Jogo>();
+
+public void criaUsuario(String nome, String login, double grana) {
+	Usuario usuarioNovo = new Noob(nome, login, grana);
+	loja.criaUsuario(usuarioNovo);
+}
+
+
+}

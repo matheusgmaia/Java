@@ -1,0 +1,7 @@
+package Loja;
+
+public class Controller {
+
+public Loja loja = new Loja();
+public Loja fachada = new Façade();
+}

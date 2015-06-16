@@ -1,0 +1,47 @@
+package Loja;
+
+import Jogo.Jogo;
+import Jogo.JogoFactory;
+import Usuario.Noob;
+import Usuario.Usuario;
+import Loja.Loja;
+import Loja.Façade;
+
+public Loja loja = new Loja();
+public Façade fachada = new Façade();
+
+public class Controller {
+	public void criaUsuario(String nome, String login, double grana) {
+		Usuario usuarioNovo = new Noob(nome, login, grana);
+		loja.criaUsuario(usuarioNovo);
+	}
+
+	public void jogoNovo(String nome, double valor, Jogo.TipoDeJogo tipo,
+		Jogo.EstiloDeJogo... deJogos) {
+		Jogo jogoNovo = JogoFactory.criaJogo(nome, valor, tipo, deJogos);
+	}
+	
+	public void vendaJogos(String nome, String login) {
+		if (mapaDeUsuarios.containsKey(login) || (tabelaDeJogos.containsKey(nome))) {
+			Usuario usuario = mapaDeUsuarios.get(login);
+			Jogo jogo = null;
+			for (Jogo jogo2 : jogosCadastrados) {
+				if (jogo2.getNome() == nome) {
+					jogo = jogo2;
+				}
+			}
+			
+			if (usuario.getDinheiroQuePossui() >= (tabelaDeJogos.get(nome))* usuario.getTipoDeUsuario().valorDoDesconto) {
+					totalArrecadado += (tabelaDeJogos.get(nome) * usuario.getTipoDeUsuario().valorDoDesconto);
+					Jogo jogoCopia = JogoFactory.criacopia(jogo);
+					usuario.comprarJogo(jogoCopia);
+
+				} else {
+					System.out.println("Usuario não tem dinheiro suficiente");
+				}
+				} else {
+					System.out.println("Jogo ou Usuario nao cadastrado!");
+
+				}
+			}
+}
