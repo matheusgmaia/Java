@@ -1,14 +1,11 @@
 package Usuario;
 
+public class Veterano extends Jogador {
 
-public class Veterano extends Jogador{
-	
-	
-	
-	public Veterano(){
+	public Veterano() {
 		super.tipoDeUsuario = "Veterano";
 		super.valorDoDesconto = 0.90;
-	
+
 	}
 
 }

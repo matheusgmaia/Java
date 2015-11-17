@@ -16,7 +16,6 @@ public class Usuario {
 	private double dinheiroQuePossui;
 	CatalogoDeJogos jogosComprados = new CatalogoDeJogos();
 
-
 	public Usuario(String nome2, String login2, double grana) {
 		this.setNome(nome2);
 		this.login = login2;
@@ -24,6 +23,12 @@ public class Usuario {
 
 	}
 
+	/**
+	 * Metodo para comprar o jogos, adiciona os jogos para a lista de jogos
+	 * comprados.
+	 * 
+	 * @param jogo
+	 */
 	public void comprarJogo(Jogo jogo) {
 		this.jogosComprados.adiciona(jogo);
 		this.x2p += jogo.getValor() * 10;
@@ -31,9 +36,13 @@ public class Usuario {
 		this.dinheiroGasto += jogo.getValor();
 	}
 
+	/**
+	 * Imprime todas as informcoes do usuario em String.
+	 */
 	public void imprimeInformacoesUsuario() {
-		System.out.println(this.login + "\n" + this.getNome() + " - Jogador" + this.jogador.tipoDeUsuario
-				+ " X2p:" + this.x2p + "\nLista de Jogos:");
+		//Apenas repassa as informcoes do usuario em String.
+		System.out.println(this.login + "\n" + this.getNome() + " - Jogador" + this.jogador.tipoDeUsuario + " X2p:"
+				+ this.x2p + "\nLista de Jogos:");
 		for (Jogo jogo : jogosComprados.getArrayJogos()) {
 			System.out.println("\n+ " + jogo.getNome() + "- " + jogo.tipo + ":" + "\n==> Jogou "
 					+ jogo.getVezesJogadas() + " vez(es)" + "\n==> Zerou " + jogo.getVezesZeradas() + " vez(es)"
@@ -58,6 +67,9 @@ public class Usuario {
 	public void setDinheiroQuePossui(double dinheiroQuePossui) {
 		this.dinheiroQuePossui = dinheiroQuePossui;
 	}
+	public void adicionaDinheiro(double valor) {
+		setDinheiroQuePossui((getDinheiroQuePossui() + valor));
+	}
 
 	public String getLogin() {
 		return login;
@@ -67,9 +79,6 @@ public class Usuario {
 		this.login = login;
 	}
 
-	public void adicionaDinheiro(double valor) {
-		setDinheiroQuePossui((getDinheiroQuePossui() + valor));
-	}
 
 	public int getX2p() {
 		return x2p;
@@ -87,14 +96,16 @@ public class Usuario {
 		this.dinheiroGasto = dinheiroGasto;
 	}
 
-
-
 	public CatalogoDeJogos getJogosComprados() {
 		return jogosComprados;
 	}
 
 	public void setJogosComprados(ArrayList<Jogo> jogosComprados) {
 		this.jogosComprados.setJogosComprados(jogosComprados);
+	}
+	
+	public String getTipoDeUsuarioString() {
+		return this.jogador.getTipoDeUsuario();
 	}
 
 	public String getNome() {
@@ -105,18 +116,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-
-
 	public Jogador getJogador() {
 		return jogador;
 	}
 
 	public void setJogador(Jogador jogador) {
 		this.jogador = jogador;
-	}
-
-	public String getTipoDeUsuarioString() {
-		return this.jogador.getTipoDeUsuario();
 	}
 
 }
