@@ -1,4 +1,4 @@
-package Jogo;
+package Core;
 import java.util.Set;
 
 

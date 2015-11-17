@@ -1,18 +1,12 @@
-package Loja;
+package Core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import Jogo.Jogo;
-import Jogo.JogoFactory;
-import Usuario.Noob;
-import Usuario.Usuario;
-
 public class Controller {
 
 public static Loja loja = new Loja();
-public static Façade fachada = new Façade();
 Map<String, Double> catalagoDeJogos = new HashMap<String, Double>();
 private double totalArrecadado = 0;
 private ArrayList<Jogo> jogosCadastrados = new ArrayList<Jogo>();

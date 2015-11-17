@@ -1,7 +1,5 @@
-package Usuario;
+package Core;
 import java.util.ArrayList;
-
-import Jogo.Jogo;
 
 public class Usuario {
 

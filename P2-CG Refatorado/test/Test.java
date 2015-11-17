@@ -1,5 +1,5 @@
-import Jogo.Jogo;
-import Loja.Loja;
+import Core.Jogo;
+import Core.Loja;
 
 public class Test {
 

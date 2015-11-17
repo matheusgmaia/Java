@@ -1,5 +1,6 @@
-package Usuario;
+package Core;
 
+import Core.Usuario.TipoDeUsuario;
 
 public class Noob extends Usuario{
 

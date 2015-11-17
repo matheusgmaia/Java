@@ -1,12 +1,7 @@
-package Loja;
+package Core;
 import java.util.*;
 
 import Excepions.JogoNExiste;
-import Jogo.Jogo;
-import Jogo.JogoFactory;
-import Usuario.Noob;
-import Usuario.Usuario;
-import Usuario.Veterano;
 
 public class Loja {
 	// DADOS

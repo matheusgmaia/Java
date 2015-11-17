@@ -1,5 +1,8 @@
-package Jogo;
+package Core;
 import java.util.Set;
+
+import Core.Jogo.EstiloDeJogo;
+import Core.Jogo.TipoDeJogo;
 
 public class RPG extends Jogo {
 

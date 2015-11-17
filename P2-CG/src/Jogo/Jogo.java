@@ -92,6 +92,10 @@ public abstract class Jogo {
 	public void setVezesJogadas(int vezesJogadas) {
 		this.vezesJogadas = vezesJogadas;
 	}
+	
+	public void jogando() {
+		this.vezesJogadas ++;
+	}
 
 	public int getVezesZeradas() {
 		return vezesZeradas;

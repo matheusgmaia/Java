@@ -22,7 +22,7 @@ public class Luta extends Jogo {
 		if(zerar == true){
 			vezesZeradas +=1;
 		}
-		vezesJogadas += 1;
+		super.jogando();
 		if(maiorScore < maiorScore1){
 			maiorScore = maiorScore1;
 		}

@@ -1,7 +1,7 @@
-package Jogo;
+package Core;
 
-import Jogo.Jogo.EstiloDeJogo;
-import Jogo.Jogo.TipoDeJogo;
+import Core.Jogo.EstiloDeJogo;
+import Core.Jogo.TipoDeJogo;
 
 public class JogoFactory {
 

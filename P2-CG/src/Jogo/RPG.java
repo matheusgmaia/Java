@@ -21,7 +21,7 @@ public class RPG extends Jogo {
 		if(maiorScore < maiorScore1){
 			maiorScore = maiorScore1;
 		}
-		vezesJogadas += 1;
+		super.jogando();
 		return 10;
 
 	}

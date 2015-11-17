@@ -1,5 +1,4 @@
-package Usuario;
-
+package Core;
 
 public class Veterano extends Usuario{
 
