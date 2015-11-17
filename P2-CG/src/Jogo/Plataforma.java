@@ -3,6 +3,7 @@ import java.util.Set;
 
 
 public class Plataforma extends Jogo {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	public Plataforma(String nome, double valor, Set<EstiloDeJogo> estilosDeJogo) {
 		super(nome, valor, estilosDeJogo);

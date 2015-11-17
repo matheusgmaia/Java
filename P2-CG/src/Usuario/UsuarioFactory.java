@@ -1,6 +1,8 @@
 package Usuario;
 
 public class UsuarioFactory {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
+
 	private UsuarioFactory(){}
 	
 	public static UsuarioFactory getInstance(){

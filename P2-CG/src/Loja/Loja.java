@@ -12,6 +12,8 @@ import Usuario.Usuario;
 import Usuario.UsuarioFactory;
 
 public class Loja {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
+
 	// DADOS
 	private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
 	private ArrayList<Jogo> jogosCadastrados = new ArrayList<Jogo>();

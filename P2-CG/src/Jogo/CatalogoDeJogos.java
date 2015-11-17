@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class CatalogoDeJogos {
+	/* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
+
 	private ArrayList<Jogo> jogosComprados = new ArrayList<Jogo>();
 
 	public void adiciona(Jogo jogo) {

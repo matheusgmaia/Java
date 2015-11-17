@@ -6,6 +6,7 @@ import Jogo.CatalogoDeJogos;
 import Jogo.Jogo;
 
 public class Usuario {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	// ATRIBUTOS
 	private String nome;

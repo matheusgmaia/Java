@@ -4,6 +4,7 @@ import Jogo.Jogo.EstiloDeJogo;
 import Jogo.Jogo.TipoDeJogo;
 
 public class JogoFactory {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	public static Jogo criaJogo(String nome, double valor, TipoDeJogo tipo,
 			EstiloDeJogo[] deJogos) {

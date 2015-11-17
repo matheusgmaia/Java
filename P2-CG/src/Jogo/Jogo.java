@@ -3,6 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Jogo {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	// VARIAVEIS
 	protected String nome;

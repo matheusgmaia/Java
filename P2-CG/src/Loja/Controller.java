@@ -7,6 +7,7 @@ import Jogo.Jogo.EstiloDeJogo;
 import Jogo.Jogo.TipoDeJogo;
 
 public class Controller {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	Loja loja = new Loja();
 

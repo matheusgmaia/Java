@@ -3,6 +3,7 @@ package Usuario;
 import Jogo.Jogo;
 
 public class Jogador {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	public double valorDoDesconto;
 	public String tipoDeUsuario;

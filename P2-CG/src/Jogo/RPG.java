@@ -2,6 +2,7 @@ package Jogo;
 import java.util.Set;
 
 public class RPG extends Jogo {
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
 
 	public RPG(String nome, double valor, Set<EstiloDeJogo> estilosDeJogo) {
 		super(nome, valor, estilosDeJogo);

@@ -4,7 +4,8 @@ import java.util.Set;
 
 
 public class Luta extends Jogo {
-	
+    /* 114210417 - Matheus Gomes Maia: LAB 6 - Turma 1 */
+
 	public Luta(String nome, double valor, Set<EstiloDeJogo> estilosDeJogo) {
 		super(nome, valor, estilosDeJogo);
 		super.tipo = Jogo.TipoDeJogo.LUTA;
